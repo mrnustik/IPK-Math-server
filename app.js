@@ -6,7 +6,7 @@ server = net.createServer(function (socket) {
 
     var testIndex = 0;
 
-    var tests = ["1+1", "2+2", "3-4", "4 * 4", "9/0"];
+    var tests = ["1 + 1", "2 + 2", "3 - 4", "4 * 4", "9 / 0"];
     var results = ["2" , "4", "-1" , "16", "ERROR"];
 
     var client_md5 = "";
