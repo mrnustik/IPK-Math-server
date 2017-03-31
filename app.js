@@ -14,7 +14,7 @@ server = net.createServer(function (socket) {
     socket.on('data', function (data) {
        if(data.toString().startsWith("HELLO"))
        {
-            var message = data.toString().substring(0, data.toString().indexOf("\n"));
+            var message = data.toString().substring(0, data.toString().indexOf("\n") + 1);
             console.log("HELLO message: "+ message);
             client_md5 = message.substring(5, data.toString().indexOf("\n") - 1);
             console.log("Client MD5: " + client_md5);
@@ -28,7 +28,7 @@ server = net.createServer(function (socket) {
                 socket.end();
                 return;
             }
-            var message = data.toString().substring(0, data.toString().indexOf("\n"));
+            var message = data.toString().substring(0, data.toString().indexOf("\n") + 1);
             console.log("RESULT message: " + message);
             var result = message.substring(7, data.toString().indexOf("\n") -1);
             console.log("Result of test: " + tests[testIndex]);
