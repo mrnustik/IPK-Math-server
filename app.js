@@ -6,8 +6,8 @@ server = net.createServer(function (socket) {
 
     var testIndex = 0;
 
-    var tests = ["1 + 1", "2 + 2", "3 - 4", "4 * 4", "9 / 0"];
-    var results = ["2" , "4", "-1" , "16", "ERROR"];
+    var tests = ["1 + 1", "2 + 2", "3 - 4", "4 * 4", "9 / 0", "1000 / 2", "2 / 2", "432749865987634387946482736147362498712634 / 2"];
+    var results = ["2" , "4", "-1" , "16", "ERROR", "500", "1", "ERROR"];
 
     var client_md5 = "";
 
@@ -16,7 +16,7 @@ server = net.createServer(function (socket) {
        {
             var message = data.toString().substring(0, data.toString().indexOf("\n") + 1);
             console.log("HELLO message: "+ message);
-            client_md5 = message.substring(5, data.toString().indexOf("\n") - 1);
+            client_md5 = message.substring(5, data.toString().indexOf("\n"));
             console.log("Client MD5: " + client_md5);
             sendTest(socket, testIndex);
 
@@ -28,9 +28,10 @@ server = net.createServer(function (socket) {
                 socket.end();
                 return;
             }
+	    console.log("------------------------------");
             var message = data.toString().substring(0, data.toString().indexOf("\n") + 1);
             console.log("RESULT message: " + message);
-            var result = message.substring(7, data.toString().indexOf("\n") -1);
+            var result = message.substring(7, data.toString().indexOf("\n"));
             console.log("Result of test: " + tests[testIndex]);
             console.log("Expected: " + results[testIndex]);
             console.log("Obtained: " + result);
