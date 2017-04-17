@@ -15,7 +15,7 @@ server = net.createServer(function (socket) {
 		 "2 / 2",
 		 "5 / 2",
 		 "10 / 3",
-		 "1255 / 1000"];
+		 "1258 / 1000"];
     var results = ["2.00", 
 		   "4.00", 
 		   "-1.00", 
@@ -81,7 +81,7 @@ server = net.createServer(function (socket) {
     }
 
     function sendBye(client) {
-        client.write("BYE 33e87c9cfc6fbb5a57effa090404dd19\n");
+        client.write("BYE 9b892d304b239d1a654b9064448f97c1\n");
         client.end();
     }
 });
